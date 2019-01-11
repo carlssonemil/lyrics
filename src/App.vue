@@ -17,6 +17,8 @@
 <script>
 import Lyrics from './components/Lyrics.vue'
 
+const axios = require("axios");
+
 export default {
   name: 'app',
   components: {
