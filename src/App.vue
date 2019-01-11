@@ -8,6 +8,8 @@
       
       <label for="song">Song</label>
       <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song">
+
+      <button type="submit">Search</button>
     </form>
 
     <Lyrics :lyrics="lyrics" />
@@ -29,22 +31,23 @@ export default {
       input: {
         artist: null,
         song: null
-      }
+      },
+      lyrics: null
     }
   },
-  computed: {
-    lyrics() {
-      const apiUrl  = "https://api.lyrics.ovh/v1/"
-      const artist  = this.input.artist;
-      const song    = this.input.song;
+  methods: {
+    search(input) {
+      const apiUrl  = "https://api.lyrics.ovh/v1/";
+      const artist  = input.artist;
+      const song    = input.song;
 
       if (artist && song) {
         axios.get(`${apiUrl}${artist}/${song}`)
              .then(response => {
-               return response.data.lyrics;
+               this.lyrics = response.data.lyrics;
              })
              .catch(error => {
-               return error;
+               console.log(error);
              });
       }
     }
