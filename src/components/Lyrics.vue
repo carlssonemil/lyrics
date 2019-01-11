@@ -15,6 +15,8 @@ export default {
 
 <style lang="scss" scoped>
 p {
-  line-height: 1.2;
+  font-size: 1.2em;
+  line-height: 1.3;
+  white-space: pre-line;
 }
 </style>
