@@ -1,26 +1,12 @@
-# lyrics
+# 🎶 Lyrics
+### Search for your favorite artist and song to get the lyrics.
 
-## Project setup
-```
-npm install
-```
+Made with [Vue CLI 3](https://cli.vuejs.org/) and [axios](https://github.com/axios/axios). Utilizing the [Lyrics.ovh API](https://lyricsovh.docs.apiary.io/#).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Todo
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Remove the need for both artist and song, instead making suggestions based on song entered. See [here](https://lyrics.ovh/).
 
-### Run your tests
-```
-npm run test
-```
+## License
 
-### Lints and fixes files
-```
-npm run lint
-```
+Code released under the [MIT License](https://github.com/carlssonemil/lyrics/blob/master/LICENSE).
