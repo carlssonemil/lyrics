@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <aside>
+    <aside :class="{ wide: !data }">
       <div>
         <h1>🎶 Lyrics</h1>
 
@@ -11,18 +11,20 @@
             <label for="song">Song</label>
             <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song" required>
 
-            <button type="submit">
-              <img alt="Search" src="./assets/search.svg">
-              <span>Search</span>
-            </button>
+            <div>
+              <button type="submit">
+                <img alt="Search" src="./assets/search.svg">
+                <span>Search</span>
+              </button>
+            </div>
         </form>
       </div>
 
       <p>Made with 💜 by <a href="https://github.com/carlssonemil">Emil Carlsson</a></p>
     </aside>
 
-    <main>
-      <Lyrics v-if="data" :data="data" />
+    <main v-if="data">
+      <Lyrics :data="data" />
     </main>
   </div>
 </template>
@@ -66,7 +68,7 @@ export default {
 
                 if (error.response.status === 404) {
                   this.data = {
-                    lyrics: "An error occured. This is most likely due to the fact that the requested artist or song does not exist.\n\nTry searching again.",
+                    lyrics: "An error occured. This is most likely because that the requested artist or song does not exist.\n\nTry searching again.",
                     artist: `${error.response.status} Error`,
                     song: "Artist or song does not exist"
                   }
@@ -116,11 +118,28 @@ body {
     justify-content: space-between;
     height: 100vh;
     padding: 30px;
+    transition: 0.25s ease-out;
     width: $aside-width;
+
+    &.wide {
+      width: 100%;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+
+        div {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
 
     p {
       font-weight: 500;
       margin: 0;
+      text-align: center;
 
       a {
         color: white;
@@ -151,6 +170,7 @@ h1 {
 }
 
 form {
+  margin: 0 auto;
   width: 100%;
 }
 
