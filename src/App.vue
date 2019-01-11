@@ -62,7 +62,15 @@ export default {
                }
              })
              .catch(error => {
-               console.log(error);
+                console.log(error);
+
+                if (error.response.status === 404) {
+                  this.data = {
+                    lyrics: "An error occured. This is most likely due to the fact that the requested artist or song does not exist.\n\nTry searching again.",
+                    artist: `${error.response.status} Error`,
+                    song: "Artist or song does not exist"
+                  }
+               }
              });
       }
     }
@@ -81,6 +89,11 @@ export default {
 
   &:focus {
     outline: none;
+  }
+
+  &::selection {
+    background: lighten($primary-color, 5%);
+    color: white;
   }
 }
 
