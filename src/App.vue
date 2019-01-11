@@ -29,6 +29,23 @@ export default {
         song: null
       }
     }
+  },
+  computed: {
+    lyrics() {
+      const apiUrl  = "https://api.lyrics.ovh/v1/"
+      const artist  = this.input.artist;
+      const song    = this.input.song;
+
+      if (artist && song) {
+        axios.get(`${apiUrl}${artist}/${song}`)
+             .then(response => {
+               return response.data.lyrics;
+             })
+             .catch(error => {
+               return error;
+             });
+      }
+    }
   }
 }
 </script>
