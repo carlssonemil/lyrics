@@ -18,7 +18,7 @@
       </div>
     </form>
 
-    <Lyrics :lyrics="lyrics" />
+    <Lyrics v-if="lyrics" :lyrics="lyrics" />
   </div>
 </template>
 
