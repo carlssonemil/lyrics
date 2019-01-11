@@ -6,10 +6,10 @@
 
         <form @submit.prevent="search(input)">
             <label for="artist">Artist</label>
-            <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist">
+            <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist" required>
 
             <label for="song">Song</label>
-            <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song">
+            <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song" required>
 
             <button type="submit">
               <img alt="Search" src="./assets/search.svg">
@@ -40,8 +40,8 @@ export default {
   data() {
     return {
       input: {
-        artist: "Post Malone",
-        song: "Go Flex"
+        artist: null,
+        song: null
       },
       data: null
     }
