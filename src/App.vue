@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-
     <form @submit.prevent="search(input)">
       <label for="artist">Artist</label>
       <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist">
