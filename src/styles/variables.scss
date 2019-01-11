@@ -2,11 +2,13 @@
 
 $font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$app-max-width: 800px;
+$aside-width: 300px;
 
 $background-color: $oc-gray-2;
 
 $border-radius: 3px;
 
-$primary-color: $oc-violet-5;
-$primary-color-darker: $oc-violet-7;
+$primary-color: $oc-violet-4;
+$primary-color-darker: $oc-violet-8;
+
+$transition: 0.15s ease;
