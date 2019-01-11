@@ -32,7 +32,7 @@ h4 {
 
 p {
   font-size: 18px;
-  line-height: 1.3;
+  line-height: 1.35;
   white-space: pre-line;
 }
 
