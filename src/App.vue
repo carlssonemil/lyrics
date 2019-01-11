@@ -2,6 +2,14 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
 
+    <form @submit.prevent="search(input)">
+      <label for="artist">Artist</label>
+      <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist">
+      
+      <label for="song">Song</label>
+      <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song">
+    </form>
+
     <Lyrics :lyrics="lyrics" />
   </div>
 </template>
@@ -13,6 +21,14 @@ export default {
   name: 'app',
   components: {
     Lyrics
+  },
+  data() {
+    return {
+      input: {
+        artist: null,
+        song: null
+      }
+    }
   }
 }
 </script>
