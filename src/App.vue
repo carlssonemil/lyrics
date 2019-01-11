@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-    <h1>🎶 Lyrics</h1>
-
-    <form @submit.prevent="search(input)">
+    <aside>
       <div>
-        <label for="artist">Artist</label>
-        <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist">
-      </div>
-      
-      <div>
-        <label for="song">Song</label>
-        <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song">
+        <h1>🎶 Lyrics</h1>
+
+        <form @submit.prevent="search(input)">
+            <label for="artist">Artist</label>
+            <input type="text" id="artist" name="artist" placeholder="E.g. Post Malone" v-model="input.artist">
+
+            <label for="song">Song</label>
+            <input type="text" id="song" name="song" placeholder="E.g. Congratulations" v-model="input.song">
+
+            <button type="submit">
+              <img alt="Search" src="./assets/search.svg">
+              <span>Search</span>
+            </button>
+        </form>
       </div>
 
-      <div>
-        <button type="submit"><img alt="Search" src="./assets/search.svg"></button>
-      </div>
-    </form>
+      <p>Made with 💜 by <a href="https://github.com/carlssonemil">Emil Carlsson</a></p>
+    </aside>
 
-    <Lyrics v-if="lyrics" :lyrics="lyrics" />
+    <main>
+      <Lyrics v-if="data" :data="data" />
+    </main>
   </div>
 </template>
 
@@ -35,10 +40,10 @@ export default {
   data() {
     return {
       input: {
-        artist: null,
-        song: null
+        artist: "Post Malone",
+        song: "Go Flex"
       },
-      lyrics: null
+      data: null
     }
   },
   methods: {
@@ -50,7 +55,11 @@ export default {
       if (artist && song) {
         axios.get(`${apiUrl}${artist}/${song}`)
              .then(response => {
-               this.lyrics = response.data.lyrics;
+               this.data = {
+                 lyrics: response.data.lyrics,
+                 artist: artist,
+                 song: song
+               }
              })
              .catch(error => {
                console.log(error);
@@ -77,80 +86,110 @@ export default {
 
 body {
   background: $background-color;
-  margin: 20px;
+  margin: 0;
 }
 
 #app {
   color: #2c3e50;
-  margin: 50px auto 0;
-  max-width: $app-max-width;
+  display: flex;
+  overflow: hidden;
+
+  aside {
+    background: $primary-color;
+    border-right: 1px solid darken($primary-color, 2%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 30px;
+    width: $aside-width;
+
+    p {
+      font-weight: 500;
+      margin: 0;
+
+      a {
+        color: white;
+        border-bottom: 2px solid darken($primary-color, 5%);
+        padding: 0 2px 2px;
+        text-decoration: none;
+        transition: $transition;
+
+        &:hover {
+          border-color: $primary-color-darker;
+        }
+      }
+    }
+  }
+
+  main {
+    height: 100vh;
+    padding: 30px 50px;
+    overflow-y: auto;
+    width: calc(100vw - #{$aside-width});
+  }
 }
 
 h1 {
+  font-size: 30px;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
 form {
-  display: flex;
-  margin: 40px 0 20px;
   width: 100%;
-
-  > div {
-    position: relative;
-    width: 100%;
-  }
-
-  > div + div {
-    margin-left: 20px;
-  }
-
-  > div:last-of-type {
-    display: flex;
-    flex: 0;
-  }
 }
 
 label {
-  color: $primary-color;
+  color: darken($primary-color-darker, 5%);
   display: block;
   font-weight: 500;
-  left: 5px;
-  position: absolute;
-  top: -30px;
+  margin-bottom: 5px;
 }
 
 input {
   background: white;
   border: none;
   border-radius: $border-radius;
-  box-shadow: 0px 2px 10px 0px darken($background-color, 5%);
-  font-size: 1.2em;
+  box-shadow: 0px 2px 10px 0px rgba($primary-color-darker, 0.75);
+  font-size: 16px;
   font-weight: 500;
-  padding: 10px 15px;
-  transition: 0.15s ease;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  transition: $transition;
   width: 100%;
 
   &:focus {
-    box-shadow: 0px 2px 15px 0px darken($background-color, 10%);
+    box-shadow: 0px 2px 15px 0px rgba(darken($primary-color-darker, 5%), 1);
   }
 }
 
 button {
-  background: $primary-color;
+  align-items: center;
+  background: $primary-color-darker;
   border: none;
   border-radius: $border-radius;
   cursor: pointer;
   display: flex;
+  height: 45px;
+  margin-top: 20px;
   padding: 0 18px;
-  transition: 0.15s ease;
+  transition: $transition;
 
   &:hover {
-    background: $primary-color-darker;
+    background: darken($primary-color-darker, 5%);
   }
 
   img {
     height: 16px;
+  }
+
+  span {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
   }
 }
 </style>

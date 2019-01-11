@@ -1,7 +1,9 @@
 <template>
   <transition name="fade">
     <div class="lyrics">
-      <p>{{ lyrics }}</p>
+      <h3>{{ data.song }}</h3>
+      <h4>{{ data.artist }}</h4>
+      <p>{{ data.lyrics }}</p>
     </div>
   </transition>
 </template>
@@ -10,14 +12,26 @@
 export default {
   name: 'Lyrics',
   props: {
-    lyrics: String
+    data: Object
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+
+h3 {
+  font-size: 30px;
+  margin: 0;
+}
+
+h4 {
+  color: $primary-color;
+  margin: 5px 0 0;
+}
+
 p {
-  font-size: 1.2em;
+  font-size: 18px;
   line-height: 1.3;
   white-space: pre-line;
 }
