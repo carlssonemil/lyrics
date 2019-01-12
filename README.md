@@ -5,7 +5,9 @@ Made with [Vue CLI 3](https://cli.vuejs.org/) and [axios](https://github.com/axi
 
 ## Todo
 
-Remove the need for both artist and song, instead making suggestions based on song entered. See [here](https://lyrics.ovh/).
+- [x] Remove the need for both artist and song, instead making suggestions based on song entered. See [here](https://lyrics.ovh/).
+- [ ] Add arrow functionality in suggestion window.
+- [ ] Implement [Vue Router](https://router.vuejs.org/) to be able to save URLs for lyrics.
 
 ## License
 
