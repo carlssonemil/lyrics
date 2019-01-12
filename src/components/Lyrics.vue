@@ -20,6 +20,10 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
+.lyrics {
+  padding-bottom: 50px;
+}
+
 h3 {
   font-size: 30px;
   margin: 0;
@@ -32,7 +36,8 @@ h4 {
 
 p {
   font-size: 18px;
-  line-height: 1.35;
+  font-weight: 500;
+  line-height: 1.5;
   white-space: pre-line;
 }
 

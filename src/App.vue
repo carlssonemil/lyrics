@@ -115,6 +115,10 @@ body {
   background: $background-color;
   margin: 0;
   overflow: hidden;
+
+  @media screen and (max-width: $mobile-break-point) {
+    overflow: visible;
+  }
 }
 
 #app {
@@ -124,6 +128,7 @@ body {
 
   @media screen and (max-width: $mobile-break-point) {
     flex-direction: column;
+    overflow: visible;
   }
 
   aside {
@@ -143,7 +148,7 @@ body {
       height: 100px;
       justify-content: center;
       padding: 20px;
-      position: absolute;
+      position: fixed;
       width: 100%;
     }
 
@@ -217,6 +222,8 @@ body {
     @media screen and (max-width: $mobile-break-point) {
       height: calc(100vh - 100px);
       margin-top: 100px;
+      overflow-y: visible;
+      padding: 30px 30px 50px;
       width: 100%;
     }
   }
@@ -281,13 +288,6 @@ form {
   }
 }
 
-label {
-  color: darken($primary-color-darker, 5%);
-  display: block;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
 input {
   background: white;
   border: none;
@@ -301,34 +301,6 @@ input {
 
   &:focus {
     box-shadow: 0px 2px 15px 0px rgba(darken($primary-color-darker, 5%), 1);
-  }
-}
-
-button {
-  align-items: center;
-  background: $primary-color-darker;
-  border: none;
-  border-radius: $border-radius;
-  cursor: pointer;
-  display: flex;
-  height: 45px;
-  margin-top: 20px;
-  padding: 0 18px;
-  transition: $transition;
-
-  &:hover {
-    background: darken($primary-color-darker, 5%);
-  }
-
-  img {
-    height: 16px;
-  }
-
-  span {
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 10px;
   }
 }
 
