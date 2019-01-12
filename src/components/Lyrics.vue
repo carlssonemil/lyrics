@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="lyrics">
-      <h3>{{ data.song }}</h3>
+      <h3>{{ data.title }}</h3>
       <h4>{{ data.artist }}</h4>
       <p>{{ data.lyrics }}</p>
     </div>
